@@ -24,6 +24,12 @@ export function makeServer() {
 
                 return { todo: attrs }
             })
+
+            // DELETE TODO
+            this.delete("/api/todos/:id", (schema, request) => {
+                const id = request.params.id
+                return schema.todos.find(id).destroy()
+            })
         }
     })
 
