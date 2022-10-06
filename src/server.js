@@ -15,6 +15,15 @@ export function makeServer() {
                     todos
                 }
             })
+
+            // POST REQUEST
+            this.post("/api/todos", (schema, request) => {
+                const attrs = JSON.parse(request.requestBody)
+                attrs.id = Math.floor(Math.random() * 1000)
+                todos.push(attrs)
+
+                return { todo: attrs }
+            })
         }
     })
 
